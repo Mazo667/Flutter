@@ -72,6 +72,9 @@ class PerfilUsuario extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //ModalRoute se usa para representar la ruta actual de la aplicacion
+    //el metodo settings de la ruta actual de la aplicacion devuelve un objeto RouteSettings que contiene los argumentos de ruta
+    //en este caso los argumentos de ruta son el Id de Usuario
     final userId = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
