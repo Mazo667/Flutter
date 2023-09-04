@@ -83,11 +83,32 @@ class _LoginState extends State<Login> {
                         //Navegar a la pagina pricipal del usuario si la informacion es correcta
                         if (emailController.text == "maxi@gmail.com" &&
                             passwordController.text == "1234") {
+                          //Uso el widget PageRouteBuilder para cambiar la animacion de transicion
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      HomePage(email: emailController.text),
+                              transitionsBuilder: (context, animation,
+                                      secondaryAnimation, child) =>
+                                  SlideTransition(
+                                position: animation.drive(
+                                  Tween(
+                                      begin: Offset(1.0, 0.0),
+                                      end: Offset(0.0, 0.0)),
+                                ),
+                                child: child,
+                              ),
+                            ),
+                          );
+                          /*
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
                                       HomePage(email: emailController.text)));
+                           */
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
